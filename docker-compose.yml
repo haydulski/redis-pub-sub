@@ -1,0 +1,37 @@
+services:
+  redis:
+    image: redis:7.2.5-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - redis-test
+
+  pub:
+    build:
+      context: ./src1
+    networks:
+      - redis-test
+    ports:
+     - 8001:8900
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - redis
+
+  sub:
+    build:
+      context: ./src2
+    networks:
+      - redis-test
+    ports:
+      - 8002:8900
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - redis
+
+networks:
+  redis-test:
+    driver: bridge
