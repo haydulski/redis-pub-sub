@@ -15,6 +15,8 @@ $client = new Client([
     'port'   => $_ENV['REDIS_PORT'],
 ]);
 
+$client->flushdb();
+
 $messages = json_decode(
     file_get_contents('./messages.json'),
     true,
@@ -23,10 +25,8 @@ $messages = json_decode(
 );
 
 foreach ($messages['data'] as $message) {
-    $client->publish('messages', $message);
+    $client->xadd('messages', ['msg' => $message]);
     echo "Message published ($message)" . PHP_EOL;
-
-    sleep(random_int(1, 10));
 }
 
 echo 'Publishing finished.' . PHP_EOL;
