@@ -6,7 +6,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Predis\Client;
 
-echo '<h1>App Subscriber</h1>';
+echo 'App Subscriber started' . PHP_EOL;
 
 $channel = 'messages';
 
@@ -43,8 +43,8 @@ foreach ($pubsub as $message) {
     // Optionally break the loop or perform other actions
     if ($message->kind === 'message' && $message->payload === 'quit') {
         $pubsub->unsubscribe(); // This will stop the loop
-        echo 'Listening stopped';
+        echo 'Listening stopped' . PHP_EOL;
     }
 }
 
-echo "Exiting pubsub loop...\n";
+echo 'Exiting pubsub loop' . PHP_EOL;

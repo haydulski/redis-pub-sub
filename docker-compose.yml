@@ -8,7 +8,7 @@ services:
 
   pub:
     build:
-      context: ./src1
+      context: ./pub
     networks:
       - redis-test
     ports:
@@ -21,7 +21,7 @@ services:
 
   sub:
     build:
-      context: ./src2
+      context: ./sub
     networks:
       - redis-test
     ports:

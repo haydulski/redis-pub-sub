@@ -10,6 +10,6 @@ COPY *.php /var/www/html
 
 RUN composer install --prefer-dist --no-dev --optimize-autoloader
 
-COPY .. .
+COPY . .
 
-CMD ["php", "-S", "0.0.0.0:8900", "-t", "/var/www/html"]
+#CMD ["php", "-S", "0.0.0.0:8900", "-t", "/var/www/html"]
