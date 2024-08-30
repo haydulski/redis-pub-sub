@@ -2,7 +2,7 @@
 
 ## Quick start
 - git clone project
-- git fetch -all
+- git fetch --all
 - docker compose up -d
 - open 2 terminals
 - 1 terminal tab: docker exec -it {pub image name} sh
@@ -20,7 +20,7 @@
 
 ## Redis streams quick start
 - git clone project
-- git fetch -all
+- git fetch --all
 - git checkout redis-stream
 - git pull
 - docker compose up --build -d
